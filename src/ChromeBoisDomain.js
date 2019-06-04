@@ -9,7 +9,13 @@ export default class ChromeBoisDomain extends Component {
     drawChromeBoiAtCoords(event.clientX, event.clientY)
   }
   
- 
+  handleKeyPress = (event) => {
+    if (event.key === 'a') {
+      resize('+')
+    } else if (event.key === 's') {
+      resize('-')
+    }
+  }
   /* TODO: Add an event listener to the `<canvas>` element to capture when a key
   /* is pressed. When a key is pressed, an event handler should invoke the the
   /* provided `resize` function with a single argument of either '+' or '-'
@@ -21,8 +27,9 @@ export default class ChromeBoisDomain extends Component {
     return (
       <canvas 
         onMouseMove={this.handleMouseMove}
-        // This is all thats needed for a no-parameter on click event
+        // This is all thats needed for a no-parameter on-click event
         onClick={() => {toggleCycling()}}
+        onKeyDown={this.handleKeyPress}
         width='900'
         height='600'
         tabIndex="0">
